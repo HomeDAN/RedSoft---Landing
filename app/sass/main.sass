@@ -1,0 +1,731 @@
+//____________________________________
+//	
+// FONTS _____________________________
+
+@font-face
+	font-family: "Geometria-Medium"
+	src: url("../fonts/Geometria-Medium.otf") format('truetype')
+
+@font-face
+	font-family: "TypeMates - Cera Round Pro Bold"
+	src: url("../fonts/TypeMates - Cera Round Pro Bold.otf") format('truetype')
+
+@font-face
+	font-family: "TypeMates - CeraRoundPro-Medium"
+	src: url("../fonts/TypeMates - CeraRoundPro-Medium.ttf") format('truetype')
+
+@font-face
+	font-family: "TypeMates - CeraRoundPro-Regular"
+	src: url("../fonts/TypeMates - CeraRoundPro-Regular.otf") format('truetype')
+
+
+$btntext: "Geometria-Medium", sans-serif
+$titlefont:  "TypeMates - Cera Round Pro Bold", sans-serif
+$mainfont: "TypeMates - CeraRoundPro-Regular", sans-serif
+$mediumfont: "TypeMates - CeraRoundPro-Medium", sans-serif
+
+//____________________________________
+//	
+// RESPONSIVE ________________________
+
+@mixin respond-to($media)
+	@if $media == mobile
+		@media only screen and (max-width: 749px)
+			@content
+
+	@else if $media == tablet
+		@media only screen and (min-width: 750px) and (max-width: 969px)
+			@content
+
+	@else if $media == laptop
+		@media only screen and (min-width: 970px) and (max-width: 1170px)
+			@content
+
+//____________________________________
+//	
+// COLORS ____________________________
+
+$black: #000207
+$white: #fff
+$bckcolor: #f1f3fb
+$greybck: #fafaff
+$stripescolor: rgba(227, 231, 244, .5)
+$circlecolor: #5489c3
+$pink: #e70067
+$darkpink: #c9005a
+$darkblue: #335b91
+$fontcolor: #60759d
+$listcolor: #16afe0
+$aquacolor: #b9dff4
+$footercolor: #39649d
+$redsoftcolor: #e70067
+
+@mixin gradientbanner()
+	background: rgba(14,114,183,1)
+	background: -moz-linear-gradient(top, rgba(14,114,183,1) 0%, rgba(40,43,100,1) 100%)
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(14,114,183,1)), color-stop(100%, rgba(40,43,100,1)))
+	background: -webkit-linear-gradient(top, rgba(14,114,183,1) 0%, rgba(40,43,100,1) 100%)
+	background: -o-linear-gradient(top, rgba(14,114,183,1) 0%, rgba(40,43,100,1) 100%)
+	background: -ms-linear-gradient(top, rgba(14,114,183,1) 0%, rgba(40,43,100,1) 100%)
+	background: linear-gradient(to bottom, rgba(14,114,183,1) 0%, rgba(40,43,100,1) 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e72b7', endColorstr='#282b64', GradientType=0 )
+
+@mixin pseudo()
+	content: ""
+	display: block
+	position: absolute
+
+
+//____________________________________
+//	
+// RESETS ____________________________
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	// outline: 1px solid red
+
+html, body
+	height: 100%
+
+body
+	font-family: $mainfont
+	color: $fontcolor
+	background: $greybck
+
+
+ul
+	list-style: none
+
+a
+	text-decoration: none
+	color: rgba(0,0,0,.55)
+	font-weight: 600
+
+button
+	background: none
+	border: 0
+
+.page
+	min-height: 100%
+	min-width: 320px
+
+
+.container
+	max-width: 1170px
+	width: 100%
+	margin: 0 auto
+	@include respond-to(mobile)
+		padding: 0 25px
+
+.section
+	width: 100%
+	position: relative
+	z-index: 10
+
+.section-content
+	position: relative
+	z-index: 5
+
+.section-header
+	padding: 80px 0 0 0
+	@include respond-to(mobile)
+		padding: 50px 0 0 0
+	@include respond-to(tablet)
+		padding: 0
+
+.section-title
+	font-size: 2.2rem
+	letter-spacing: 1.5px	
+	@include respond-to(mobile)
+		font-size: 1.5rem
+
+.section-sub-title
+	margin: 25px 0
+	font-size: 1rem
+	font-weight: 200
+	letter-spacing: .5px
+
+.section-list
+	list-style: disc
+	color: $listcolor
+
+.section-list__item
+	margin: 22px 0px 22px 20px
+
+.section-text
+	color: $fontcolor
+
+.button
+	background: $pink
+	padding: 20px 30px
+	border-radius: 50px
+	color: $white
+	position: relative
+	z-index: 100
+	transition: all .2s ease 
+	&:hover
+		padding: 20px 50px
+		background: $darkpink
+		transition: all .2s ease 
+//____________________________________
+//	
+// PAGE ______________________________	
+
+// - // HEADER ______________________
+
+.header
+	position: absolute
+	width: 100%
+	z-index: 10000
+	padding: 20px 0
+
+.header-nav
+	width: 100%
+	display: flex
+	justify-content: space-between
+	padding: 0 0 0 10px
+
+.logo
+	padding: 15px 100px
+	text-indent: -10000000px
+	background: url(../img/logo-white.png) center no-repeat
+
+.menu
+	display: flex
+	margin: 15px 0 0 0
+	position: relative
+	@include respond-to(mobile)
+		display: none
+		position: absolute
+		width: 100%
+		height: 100vh
+		top: 90px
+		left: 0
+		margin: 0
+		padding: 0
+		background: $greybck
+	@include respond-to(tablet)
+		display: none
+		position: absolute
+		width: 100%
+		height: 100vh
+		top: 90px
+		left: 0
+		margin: 0
+		padding: 0
+		background: $greybck
+
+.menu-button-mobile
+	display: none
+	@include respond-to(mobile)
+		padding: 20px
+		display: block
+	@include respond-to(tablet)
+		padding: 20px
+		display: block
+
+.fa-bars
+	color: $white
+	font-size: 1.2rem
+
+.menu-item
+	margin: 0 0 0 40px
+	@include respond-to(mobile)
+		width: 100%
+		text-align: center
+		margin: 30px 0
+	@include respond-to(tablet)
+		width: 100%
+		text-align: center
+		margin: 30px 0
+
+.menu-button
+	color: $white
+	position: relative
+	transition: .2s ease
+	@include respond-to(mobile)
+		color: $fontcolor
+	@include respond-to(tablet)
+		color: $fontcolor
+	&:hover
+		&:after
+			@include pseudo()
+			width: 4px
+			height: 4px
+			background: $white
+			border-radius: 100%
+			top: 25px
+			left: 50%
+			transition: .2s ease
+
+.menu-input
+	background: transparent
+	padding: 20px 10px
+	position: relative
+	top: -15px
+	right: 20px
+	border: 1px solid $stripescolor
+	border-radius: 50px
+	text-align: center
+	color: $white
+	transition: .2s ease
+	@include respond-to(mobile)
+		margin: 50px 0
+		right: 0
+		border: 1px solid $fontcolor
+		background: $fontcolor
+	@include respond-to(tablet)
+		margin: 50px 0
+		right: 0
+		border: 1px solid $fontcolor
+		background: $fontcolor
+	&:focus
+		transform: scaleX(1.1)
+		transition: .2s ease
+		background: $darkblue
+	&::-webkit-input-placeholder
+		color: $white
+		letter-spacing: 1px
+		font-weight: 600
+
+// - // - // CONTENT _________________
+
+.main-bck
+	display: block
+	width: 100%
+	background: url(../img/main-banner.jpg) center no-repeat
+	background-size: cover
+	position: relative
+	&:before
+		@include pseudo()
+		@include gradientbanner()
+		width: 100%
+		height: 90%
+		z-index: 0
+		top: 0
+		left: 0
+		opacity: .6
+
+.section-mask
+	position: relative
+	&:before
+		@include pseudo()
+		width: 100%
+		height: 150vh
+		background: url(../img/stripes-svg.svg) center no-repeat
+		background-size: cover
+		background-position: 0% 100%
+		z-index: 3
+		top: 0
+
+.banner-content
+	display: flex
+	flex-direction: column
+	text-align: center
+	justify-content: center
+	color: $white
+	line-height: 35px
+	letter-spacing: 1.2px
+	@include respond-to(mobile)
+		line-height: 25px
+		padding: 5% 0 
+
+.banner-header
+	line-height: 55px
+	margin: 180px 0 40px 0
+	@include respond-to(mobile)
+		margin: 100px 0 40px 0
+		line-height: 30px
+
+.banner-title
+	font-size: 2rem
+	@include respond-to(mobile)
+		font-size: 1.1rem
+
+.banner-body
+	margin: 0 0 5% 0
+	@include respond-to(mobile)
+		line-height: 20px
+		margin: 0 0 15% 0
+
+.banner-sub-title
+	font-size: 1.5rem
+	@include respond-to(mobile)
+		font-size: 1rem
+
+.banner-action
+	margin: 0 0 40px 0
+
+.banner-nav
+	margin: 100px 0 10px 0
+	@include respond-to(mobile)
+		margin: 20px 0
+
+.banner-nav__items
+	width: 75px
+	height: 15px
+	padding: 0
+	margin: 0 auto
+	border: 1px solid white
+	border-radius: 50px
+	opacity: .6
+	@include respond-to(mobile)
+		display: none
+
+.banner-nav__item
+	padding: 0 10px
+	border: 1px solid $white
+	display: inline-block
+	position: relative
+	top: -15.5px
+
+.banner-rounded-bck
+	width: 100%
+	height: 150px
+	position: relative
+	top: 4px
+	background: url(../img/bck-svg-top.svg) center no-repeat
+	background-size: cover
+
+.notebook-wrapper
+	display: flex
+	justify-content: center
+	padding: 35px 40px 0 0
+	@include respond-to(mobile)
+		display: block
+		padding: 0 25px
+
+.notebook
+	position: relative
+	z-index: 3
+	padding: 30px 0 150px 0
+	overflow: hidden
+	&:before
+		@include pseudo()
+		width: 55%
+		height: 55%
+		bottom: -9%
+		right: -10.5%
+		z-index: 2
+		background: url(../img/heart.svg) center no-repeat
+		@include respond-to(mobile)
+			width: 100%
+			height: 100%
+			top: 30%
+			right: 0%
+			opacity: .5
+		@include respond-to(tablet)
+			right: 10%
+	&:after
+		@include pseudo()
+		width: 100%
+		height: 80px
+		background: url(../img/bottom-svg.svg) center no-repeat
+		background-size: cover
+		z-index: 2
+		bottom: 0%
+	@include respond-to(mobile)
+		padding: 0px 0 150px 0
+	@include respond-to(tablet)
+		padding: 20px 0 150px 0
+
+.notebook-pic
+	margin: 0 auto
+
+.notebook-img
+	border-radius: 35px
+	box-shadow: 8px 5px 10px 1px rgba(0,0,0,0.3)
+	@include respond-to(mobile)
+		width: 280px
+		margin: 0 auto
+		display: block
+	@include respond-to(tablet)
+		width: 300px
+
+
+.notebook-btn
+	margin: 0 0px 0 10px
+	padding: 40px 0
+
+.func
+	width: 100%
+	background: $bckcolor
+	padding: 0 0 100px 0
+
+.func-header, .stat-header
+	text-align: center
+	margin: 0 0 25px 0
+	@include respond-to(mobile)
+		padding: 0
+
+.func-blocks
+	display: flex
+	flex-wrap: wrap
+	padding: 0 25px
+.func-block
+	padding: 20px 0 40px 0
+	flex: 1 2 320px
+	text-align: center
+
+.func-block__icon
+	margin: 25px auto
+
+.func-icon
+	background-size: cover
+	border: 1px solid $aquacolor	
+	padding: 23px
+	border-radius: 100%
+	display: block
+	margin: 0 auto
+
+.stat
+	padding: 0 0 9.5% 0
+	background: url(../img/bottom-stripes.svg) center no-repeat
+	background-size: cover
+.stat-section-title
+	text-align: center
+	margin: 65px 0
+	h2
+		letter-spacing: 1px
+
+.stat-content
+	position: relative
+	display: flex
+	padding: 45px 0 0 75px
+	justify-content: center
+
+.stat-post
+	width: 55%
+	margin: -20px 0 85px -10px
+	padding: 10px 0 0 10px
+	position: relative
+	align-self: center
+	@include respond-to(mobile)
+		width: 100%
+	@include respond-to(tablet)
+		width: 100%
+
+.stat-item
+	position: absolute
+	width: 100px
+	height: 120px
+	overflow: hidden
+	top: -20px
+	left: -100px
+	text-align: center
+	line-height: 120px
+	z-index: -1
+
+.stat-num
+	width: 120px
+	height: 120px
+	font-size: 3.5rem
+	color: $aquacolor
+	border-radius: 100%
+	border: 1px solid $aquacolor
+
+.stat-header
+	text-align: left
+
+.stat-title
+	font-size: 1.5rem
+
+.stat-body
+	margin: -10px 0 0 0
+	line-height: 25px
+
+.stat-pic
+	position: absolute
+	z-index: -10
+	top: 0%
+	right: 0%
+	overflow: hidden
+	@include respond-to(mobile)
+		display: none
+	@include respond-to(tablet)
+		display: none
+
+.stat-img
+	position: relative
+	left: 10%
+
+.master
+	padding: 0 0 11% 0
+	background: $bckcolor
+	@include respond-to(mobile)
+		padding: 15% 0 10% 0
+	@include respond-to(tablet)
+		padding: 15% 0 10% 0
+	@include respond-to(laptop)
+		padding: 15% 0 10% 0
+
+.master-wrapper
+	display: flex
+	@include respond-to(mobile)
+		display: block
+	@include respond-to(tablet)
+		display: block
+	@include respond-to(laptop)
+		display: block
+
+.master-title
+	@include respond-to(tablet)
+		margin: 10% 0 0 0
+
+.master-pic
+	width: 100%
+	position: relative
+	@include respond-to(tablet)
+
+.master-img
+	box-shadow: 2px 4px 10px 4px rgba(0,0,0,.2)
+	position: absolute
+	border-radius: 20px
+	border: 10px solid $white
+	top: -16%
+	left: -63%
+	@include respond-to(mobile)
+		width: 100%
+		position: relative
+		top: 0
+		left: 0
+	@include respond-to(tablet)
+		position: relative
+		width: 100%
+		top: 0
+		left: 0
+	@include respond-to(laptop)
+		width: 100%	
+		position: relative
+		top: 0
+		left: 0
+
+.master-pic, .master-content
+	width: 50%
+	@include respond-to(mobile)
+		width: 100%
+	@include respond-to(tablet)
+		width: 80%
+		margin: 0 auto
+	@include respond-to(laptop)
+		width: 80%
+		margin: 0 auto
+
+.cta
+	position: relative
+	padding: 0 0 8.2% 0 
+	&:before
+		@include pseudo()
+		@include gradientbanner()
+		width: 100%
+		height: 100%
+		z-index: 0
+		opacity: .1
+
+.cta-wrapper
+	position: relative
+	z-index: 1
+
+.cta-header
+	padding: 12% 0 4.5% 0
+	text-align: center
+
+.cta-sub-title
+	line-height: 35px
+	padding: 5% 0 0 0
+	font-size: 1.5rem
+	@include respond-to(mobile)
+		margin: 30px 0 0 0
+		font-size: 1rem
+		line-height: 30px
+
+.cta-form
+	display: flex
+	justify-content: center
+	@include respond-to(mobile)
+		display: block
+
+.form-input
+	width: 50%
+	min-width: 320px
+	border: 1px solid $fontcolor
+	border-radius: 50px
+	padding: 20px 0
+	margin: 0 30px 0 0
+	text-indent: 20px
+	background: transparent
+	&::-webkit-input-placeholder
+		color: #aaa
+	@include respond-to(mobile)
+		display: block
+		width: 50%
+		min-width: 250px
+		margin: 20px auto !important
+
+.form-action
+	padding: 20px 0
+	margin: 0 0 0 20px
+	@include respond-to(mobile)
+		text-align: center
+		margin: 0
+
+.form-button
+	padding: 20px 40px
+	@include respond-to(mobile)
+		margin: 0
+	@include respond-to(tablet)
+		margin: 0
+
+// - // - // FOOTER  _________________
+
+.footer
+	width: 100%
+	background: $footercolor
+
+.footer-wrapper
+	padding: 65px 0 45px 0
+	display: flex
+	justify-content: space-between
+	@include respond-to(mobile)
+		display: block
+	@include respond-to(tablet)
+		display: block
+
+.footer-logo
+	width: 170px
+	margin: 0 0 0 10px
+	background-size: cover
+	@include respond-to(mobile)
+		margin: 0 auto 40px auto
+		display: block
+	@include respond-to(tablet)
+		margin: 0 auto 40px auto
+		display: block
+
+.footer-nav
+	display: flex
+	justify-content: center
+	@include respond-to(mobile)
+		display: block
+		text-align: center
+.footer-nav__item
+	margin: 0 10px 0 45px
+	@include respond-to(mobile)
+		margin: 0 0 30px 0
+
+	@include respond-to(tablet)
+		margin: 0 0 0 50px
+
+.footer-nav__link
+	color: $white
+
+.footer-copyright
+	padding: 30px 0
+	text-align: center
+	border-top: 1px solid $darkblue
+	color: $white
+
+.copyright-link
+	color: $pink
